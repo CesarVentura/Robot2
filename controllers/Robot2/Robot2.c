@@ -12,6 +12,7 @@
  */
 #include <webots/robot.h>
 #include <webots/motor.h>
+
 #include <math.h>
 
 
@@ -21,6 +22,7 @@
 #define TIME_STEP 64
 
  #define  PI  3.14159
+  int i;
 /*
  * This is the main program.
  * The arguments of the main function can be specified by the
@@ -30,6 +32,7 @@ int main(int argc, char **argv)
 {
   /* necessary to initialize webots stuff */
       wb_robot_init();
+     
 
   /*
    * You should declare here WbDeviceTag variables for storing
@@ -38,6 +41,8 @@ int main(int argc, char **argv)
    *  WbDeviceTag my_actuator = wb_robot_get_device("my_actuator");
    */
      WbDeviceTag servo = wb_robot_get_device("servo_motor");
+     WbDeviceTag servo2 = wb_robot_get_device("servo_motor2");
+     WbDeviceTag servo3 = wb_robot_get_device("servo_motor3");
   /* main loop
    * Perform simulation steps of TIME_STEP milliseconds
    * and leave the loop when the simulation is over
@@ -62,7 +67,16 @@ int main(int argc, char **argv)
      * Enter here functions to send actuator commands, like:
      * wb_differential_wheels_set_speed(100.0,100.0);
      */
-     wb_motor_set_position(servo,PI/4);
+     //wb_motor_set_position(servo,PI/4);
+     wb_motor_set_position(servo2,PI/4);
+     wb_motor_set_position(servo3,PI/4);
+     
+     
+     
+     for(i = 20, i <= 90, i++)
+     {
+    wb_motor_set_position(servo,i);
+     }
   };
 
   /* Enter your cleanup code here */
